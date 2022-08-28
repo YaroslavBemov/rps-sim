@@ -6,7 +6,7 @@
   "version": "0.0.1",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d dist",
     "build": "webpack --mode production",
     "start": "webpack serve --hot --mode development",
     "test": "jest",
