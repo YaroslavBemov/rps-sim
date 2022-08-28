@@ -2,6 +2,24 @@ import 'styles/app.css';
 import './vendor';
 import './interfaces';
 import { FigureType, IFigure } from './interfaces';
+import { db } from './fb';
+import { collection, getDocs, addDoc, doc, onSnapshot, updateDoc, serverTimestamp } from 'firebase/firestore';
+
+// try {
+//   const docRef = await addDoc(collection(db, 'users'), {
+//     first: 'Ada',
+//     last: 'Lovelace',
+//     born: 1815
+//   });
+//   console.log('Document written with ID: ', docRef.id);
+// } catch (e) {
+//   console.error('Error adding document: ', e);
+// }
+
+// const querySnapshot = await getDocs(collection(db, 'users'));
+// querySnapshot.forEach((doc) => {
+//   console.log(`${doc.id} => ${doc.data()}`);
+// });
 
 const CANVAS_WIDTH: number = 300;
 const CANVAS_HEIGHT: number = 300;
@@ -36,6 +54,8 @@ const scissorsScore = document.getElementById('scissors-score') as HTMLSpanEleme
 const rockTotal = document.getElementById('rock-total') as HTMLSpanElement;
 const paperTotal = document.getElementById('paper-total') as HTMLSpanElement;
 const scissorsTotal = document.getElementById('scissors-total') as HTMLSpanElement;
+const totalSims = document.getElementById('total-sims') as HTMLSpanElement;
+const lastSim = document.getElementById('last-sim') as HTMLSpanElement;
 
 const startBtn = document.querySelector('.btn-start') as HTMLButtonElement;
 const pauseBtn = document.querySelector('.btn-pause') as HTMLButtonElement;
@@ -51,6 +71,24 @@ pauseBtn.disabled = true;
 
 canvas.width = CANVAS_WIDTH;
 canvas.height = CANVAS_HEIGHT;
+
+onSnapshot(doc(db, 'sim', 'score'), (doc) => {
+  rockTotal.textContent = doc.data().rock;
+  paperTotal.textContent = doc.data().paper;
+  scissorsTotal.textContent = doc.data().scissors;
+  totalSims.textContent = doc.data().totalSims;
+  lastSim.textContent = doc.data().timestamp.toDate().toLocaleTimeString('ru-RU');
+});
+
+const scoreRef = doc(db, 'sim', 'score');
+
+const updateFS = async (figure: string, count: number) => {
+  await updateDoc(scoreRef, {
+    [figure]: count,
+    totalSims: +totalSims.textContent + 1,
+    timestamp: serverTimestamp()
+  });
+};
 
 const getRandomInt = (min: number, max: number): number => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -139,21 +177,21 @@ const checkSimOver = (): void => {
 
   if (rock === totalCount) {
     clearInterval(interval);
-    rockTotal.innerText = (+rockTotal.innerText + 1).toString();
+    updateFS('rock', +rockTotal.textContent + 1);
     resetButtons();
     alert('Sim over, ROCK WIN!');
   }
 
   if (paper === totalCount) {
     clearInterval(interval);
-    paperTotal.innerText = (+paperTotal.innerText + 1).toString();
+    updateFS('paper', +paperTotal.textContent + 1);
     resetButtons();
     alert('Sim over, PAPER WIN!');
   }
 
   if (scissors === totalCount) {
     clearInterval(interval);
-    scissorsTotal.innerText = (+scissorsTotal.innerText + 1).toString();
+    updateFS('scissors', +scissorsTotal.textContent + 1);
     resetButtons();
     alert('Sim over, SCISSORS WIN!');
   }

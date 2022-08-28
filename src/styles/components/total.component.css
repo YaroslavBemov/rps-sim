@@ -6,6 +6,13 @@
 
 .total-score {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.figures-total {
+  display: flex;
   gap: 10px;
 }

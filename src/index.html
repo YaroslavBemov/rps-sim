@@ -12,22 +12,31 @@
   <div class="container">
     <div class="row">
       <div class="col">
+
         <h1 class="u-color-basic-darkest text-center">Rock, paper and scissors simulator</h1>
+
+        <div class="total mb-3">
+          <div class="total-score">
+            <div>
+              <div>Total sims: <span id="total-sims">0</span></div>
+              <div>Last sim: <span id="last-sim">0</span></div>
+            </div>
+            <div class="figures-total">
+              <div>Rock: <span id="rock-total">0</span></div>
+              <div>Paper: <span id="paper-total">0</span></div>
+              <div>Scissors: <span id="scissors-total">0</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="canvas mb-3">
+          <canvas id="canvas"></canvas>
+        </div>
+
         <div class="score mb-1">
           <div>Rock: <span id="rock-score">0</span></div>
           <div>Paper: <span id="paper-score">0</span></div>
           <div>Scissors: <span id="scissors-score">0</span></div>
-        </div>
-        <div class="canvas mb-3">
-          <canvas id="canvas"></canvas>
-        </div>
-        <div class="total mb-3">
-          <p class="h5">Total score</p>
-          <div class="total-score">
-            <div>Rock: <span id="rock-total">0</span></div>
-            <div>Paper: <span id="paper-total">0</span></div>
-            <div>Scissors: <span id="scissors-total">0</span></div>
-          </div>
         </div>
 
         <div class="settings input-group mb-3">
@@ -37,12 +46,12 @@
           <input type="number" class="form-control" id="speed">
         </div>
 
-
         <div class="controls">
           <button class="btn btn-primary btn-start">Start</button>
           <button class="btn btn-danger btn-pause">Pause</button>
           <button class="btn btn-success btn-newsim">New sim</button>
         </div>
+
       </div>
     </div>
   </div>
