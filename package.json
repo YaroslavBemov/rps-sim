@@ -2,7 +2,7 @@
   "name": "rps-sim",
   "description": "Simulation of game.",
   "license": "MIT",
-  "homepage": "https://rps-sim.github.io",
+  "homepage": "https://yaroslavbemov.github.io/rps-sim/",
   "version": "0.0.1",
   "scripts": {
     "predeploy": "npm run build",
