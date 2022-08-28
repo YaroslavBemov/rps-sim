@@ -1,0 +1,9 @@
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn {
+  min-width: 60px;
+}
