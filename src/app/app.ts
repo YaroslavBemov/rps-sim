@@ -8,7 +8,7 @@ const CANVAS_HEIGHT: number = 300;
 const FIGURE_WIDTH: number = 10;
 const FIGURE_HEIGHT: number = 10;
 const FIGURES_COUNT: number = 5;
-const FPS: number = 100;
+const FPS: number = 10;
 
 const figureImages = {
   ROCK: '🪨',
