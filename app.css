@@ -61,14 +61,9 @@ body{
   background-color:#fff;
 }
 
-h1, h5{
+h1{
   margin-top:0;
   margin-bottom:0.5rem;
-}
-
-p{
-  margin-top:0;
-  margin-bottom:1rem;
 }
 
 button{
@@ -122,8 +117,8 @@ button::-moz-focus-inner,
   -webkit-appearance:button;
 }
 
-h1, h5,
-.h1, .h5{
+h1,
+.h1{
   margin-bottom:0.5rem;
   font-weight:500;
   line-height:1.2;
@@ -131,10 +126,6 @@ h1, h5,
 
 h1, .h1{
   font-size:2.5rem;
-}
-
-h5, .h5{
-  font-size:1.25rem;
 }
 
 .container{
@@ -561,10 +552,6 @@ h5, .h5{
     -webkit-box-shadow:none !important;
             box-shadow:none !important;
   }
-  p{
-    orphans:3;
-    widows:3;
-  }
   @page{
     size:a3;
   }
@@ -706,14 +693,28 @@ canvas{
   display:-webkit-box;
   display:-ms-flexbox;
   display:flex;
+  -webkit-box-orient:vertical;
+  -webkit-box-direction:normal;
+      -ms-flex-direction:column;
+          flex-direction:column;
   -webkit-box-pack:center;
       -ms-flex-pack:center;
           justify-content:center;
+  -webkit-box-align:center;
+      -ms-flex-align:center;
+          align-items:center;
+  gap:10px;
+}
+
+.figures-total{
+  display:-webkit-box;
+  display:-ms-flexbox;
+  display:flex;
   gap:10px;
 }
 
 .settings{
-  max-width:500px;
+  max-width:400px;
   margin:0 auto;
 }
 
